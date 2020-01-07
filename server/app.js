@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
 const session = require('express-session');
 const routeHandler = require('./routes');
 
@@ -11,8 +10,8 @@ module.exports = (config) => {
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'pug');
 
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: false }));
 
   app.set('trust proxy', 1); // trust first proxy
   app.use(session({
